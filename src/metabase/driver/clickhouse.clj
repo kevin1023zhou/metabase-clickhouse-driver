@@ -375,8 +375,7 @@
   (hsql/call :case
              (hsql/call :> (hsql/call :count) 0)
              (hsql/call :sum (hsql/call :case
-                                        (sql.qp/->honeysql driver pred) 1.0
-                                        :else                           nil))
+                                        (sql.qp/->honeysql driver pred) 1.0))
              :else nil))
 
 (defmethod sql.qp/quote-style :clickhouse [_] :mysql)
