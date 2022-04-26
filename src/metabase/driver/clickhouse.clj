@@ -375,7 +375,7 @@
   (hsql/call :case
              (hsql/call :> (hsql/call :count) 0)
              (hsql/call :sum (hsql/call :case
-                                        (1=1) 1.0
+                                        (sql.qp/->honeysql driver pred) nil
                                         :else                           nil))
              :else nil))
 
