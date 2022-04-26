@@ -370,14 +370,6 @@
 ;;
 ;; metabase.query-processor-test.count-where-test
 ;; metabase.query-processor-test.share-test
-(defmethod sql.qp/->honeysql [:clickhouse :count-where]
-  [driver [_ pred]]
-  (hsql/call :case
-             (hsql/call :> (hsql/call :count) 0)
-             (hsql/call :sum (hsql/call :case
-                                        (sql.qp/->honeysql driver pred) nil
-                                        :else                           nil))
-             :else nil))
 
 (defmethod sql.qp/quote-style :clickhouse [_] :mysql)
 
